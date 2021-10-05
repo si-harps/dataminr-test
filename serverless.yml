@@ -1,0 +1,68 @@
+service: dataminr-technical-task
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-west-1
+  lambdaHashingVersion: 20201221
+  environment:
+    APP_DB_PASS: password
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript
+
+functions:
+  createList:
+    handler: src/handlers/list/create.handler
+    events:
+      - http:
+          path: list
+          method: post
+          cors: true
+  addTask:
+    handler: src/handlers/list/add.handler
+    events:
+      - http:
+          path: list/add
+          method: post
+          cors: true
+  readList:
+    handler: src/handlers/list/read.handler
+    events:
+      - http:
+          path: lists/{id?}
+          method: get
+          cors: true
+  updateList:
+    handler: src/handlers/list/update.handler
+    events:
+      - http:
+          path: lists/{id}
+          method: put
+          cors: true
+  deleteList:
+    handler: src/handlers/list/delete.handler
+    events:
+      - http:
+          path: lists/{id}
+          method: delete
+          cors: true
+  createTask:
+    handler: src/handlers/task/create.handler
+    events:
+      - http:
+          path: task
+          method: post
+          cors: true
+  updateTask:
+    handler: src/handlers/task/update.handler
+    events:
+      - http:
+          path: tasks/{id}
+          method: put
+          cors: true
+
+custom:
+  serverless-offline:
+    httpPort: 4000

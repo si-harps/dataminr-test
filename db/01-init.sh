@@ -1,0 +1,27 @@
+#!/bin/bash
+set -e
+export PGPASSWORD=$POSTGRES_PASSWORD;
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+  CREATE USER $APP_DB_USER WITH PASSWORD '$APP_DB_PASS';
+  GRANT ROOT TO $APP_DB_USER;
+  CREATE DATABASE $APP_DB_NAME;
+  GRANT ALL PRIVILEGES ON DATABASE $APP_DB_NAME TO $APP_DB_USER;
+  \connect $APP_DB_NAME $APP_DB_USER
+  BEGIN;
+    CREATE TABLE IF NOT EXISTS list (
+      id SERIAL PRIMARY KEY,
+      title CHAR(256) NOT NULL,
+      "updatedAt" TIMESTAMP NOT NULL
+    );
+    CREATE TABLE IF NOT EXISTS task (
+      id SERIAL PRIMARY KEY,
+      title CHAR(256) NOT NULL,
+      "updatedAt" TIMESTAMP NOT NULL
+    );
+    CREATE TABLE list_task (
+      list_id INT REFERENCES list (id) ON UPDATE CASCADE ON DELETE CASCADE,
+      task_id INT REFERENCES task (id) ON UPDATE CASCADE,
+      CONSTRAINT list_task_pkey PRIMARY KEY (list_id, task_id)
+    );
+  COMMIT;
+EOSQL

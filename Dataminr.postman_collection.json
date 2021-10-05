@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "9e66a377-4856-4feb-ae80-49d8c89f8ea3",
+		"name": "Dataminr",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create List",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Title 2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/dev/list",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"dev",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read Lists",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/dev/lists",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"dev",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update List Attributes",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"list 8\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/dev/lists/8",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"dev",
+						"lists",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"task 5\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/dev/task",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"dev",
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Task Attributes",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"TEST UPDATED 3 v5\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/dev/tasks/1",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"dev",
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add Task to List",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"listId\": 1,\n    \"taskId\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/dev/list/add",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"dev",
+						"list",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

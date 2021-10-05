@@ -14,7 +14,7 @@ beforeAll( async () => {
 
   const response = await server
       .post('/dev/task')
-      .send({ title: 'Task 2'});
+      .send({ title: 'Task 2' });
   
   taskId = response.body.id;
 });

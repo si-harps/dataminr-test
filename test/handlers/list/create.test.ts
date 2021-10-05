@@ -16,7 +16,7 @@ describe('Given a valid payload', () => {
 
       const response = await server
         .post('/dev/list')
-        .send({ title: 'List 1'});
+        .send({ title: 'List 1' });
 
       const body: List = response.body;
 
